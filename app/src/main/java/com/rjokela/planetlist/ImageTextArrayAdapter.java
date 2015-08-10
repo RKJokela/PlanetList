@@ -17,27 +17,45 @@ public class ImageTextArrayAdapter extends ArrayAdapter<Planet> {
     int layoutResourceId;
     Context context;
     private final Planet[] data;
+    private LayoutInflater inflater;
+
+    static class PlanetHolder {
+        ImageView imgLogo;
+        TextView txtName;
+        TextView txtType;
+    }
 
     public ImageTextArrayAdapter(Context context, int layoutResourceId, Planet[] data) {
         super(context, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
         this.data = data;
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        Log.d(TAG, "getView: rowView null: position " + position);
-        View rowView = inflater.inflate(layoutResourceId, parent, false);
-        TextView planetNameView = (TextView) rowView.findViewById(R.id.planet_name);
-        TextView planetTypeView = (TextView) rowView.findViewById(R.id.planet_type);
-        ImageView planetLogoView = (ImageView) rowView.findViewById(R.id.planet_logo);
-        planetNameView.setText(data[position].name);
-        planetTypeView.setText(data[position].type);
-        planetLogoView.setImageResource(data[position].logo);
-        return rowView;
+        PlanetHolder holder = null;
+        if (null == convertView) {
+            Log.d(TAG, "getView: rowView null: position make new holder" + position);
+            convertView = inflater.inflate(layoutResourceId, parent, false);
+            holder = new PlanetHolder();
+            holder.imgLogo = (ImageView)convertView.findViewById(R.id.planet_logo);
+            holder.txtName = (TextView)convertView.findViewById(R.id.planet_name);
+            holder.txtType = (TextView)convertView.findViewById(R.id.planet_type);
+            // Tags can be used to store data within a view
+            convertView.setTag(holder);
+        }
+        else {
+            Log.d(TAG, "getView: rowView !null - reuse holder: position " + position);
+            holder = (PlanetHolder)convertView.getTag();
+        }
+        // Display the information for that item
+        Planet planet = data[position];
+        holder.txtName.setText(planet.name);
+        holder.txtType.setText(planet.type);
+        holder.imgLogo.setImageResource(planet.logo);
+        return convertView;
     }
 }
 
