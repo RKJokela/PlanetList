@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">PlanetList</string>
     <string name="action_settings">Settings</string>
+    <string name="btn_what_is_it">What is it?</string>
+    <string name="message_is_a"> is a </string>
+    <string name="planet_symbol">Planet Symbol</string>
+    <string name="type_planet">planet</string>
+    <string name="type_minor_planet">minor planet</string>
+    <string name="what_is_it">Type</string>
+
 </resources>
