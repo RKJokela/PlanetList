@@ -7,13 +7,18 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context=". PlanetListActivityFragment " >
-    <ListView
+    <Button
+        android:id="@+id/planetWhatIsItBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/planetList"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"/>
-
+        android:text="@string/btn_what_is_it" />
+    <ListView
+        android:id="@+id/planetList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/planetWhatIsItBtn"
+        android:layout_centerHorizontal="true" >
+    </ListView>
 </RelativeLayout>
