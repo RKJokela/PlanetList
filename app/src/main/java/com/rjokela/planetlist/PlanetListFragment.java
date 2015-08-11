@@ -27,6 +27,12 @@ import android.widget.Toast;
 public class PlanetListFragment extends Fragment {
     public final static String TAG = "PlanetListFragment";
 
+    private final static String SELECTED_COLOR = "pref_selected_color";
+    private final static String WHATIF_BTN_PREF = "pref_display_button";
+
+    public static Integer mColorId;
+    public static final int SHOW_PREFERENCES = 1;
+
     private final static String KEY_POSITION = "key_position";
     private final static String INITIAL_POSITION = "pref_position";
 
@@ -69,6 +75,10 @@ public class PlanetListFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), AboutActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.action_settings:
+                startActivityForResult(new Intent(getActivity(),
+                        PlanetPrefs.class), SHOW_PREFERENCES);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -83,13 +93,17 @@ public class PlanetListFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
+
+        SharedPreferences sp =
+                PreferenceManager.getDefaultSharedPreferences(getActivity());
+        mColorId = Integer.parseInt(sp.getString(SELECTED_COLOR, "0"));
+        boolean showWhatIsButton = sp.getBoolean(WHATIF_BTN_PREF, true);
+
         planet_data = setupPlanets();
 
         if (savedInstanceState != null) {
             mPosition = savedInstanceState.getInt(KEY_POSITION, 0);
         } else {
-            SharedPreferences sp =
-                    PreferenceManager.getDefaultSharedPreferences(getActivity());
             mPosition = sp.getInt(INITIAL_POSITION, 0);
             Log.d(TAG,"onActivityCreated mySharedPreferences mPosition " + mPosition);
         }
@@ -113,6 +127,24 @@ public class PlanetListFragment extends Fragment {
                 clickListItem(view, position);
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d(TAG, "onActivityResult - data: " + data);
+
+        if (requestCode == SHOW_PREFERENCES) {
+            SharedPreferences sp =
+                    PreferenceManager.getDefaultSharedPreferences(getActivity());
+            mColorId = Integer.parseInt(sp.getString(SELECTED_COLOR, "0"));
+
+            Log.d(TAG, "onActivityResult - color: " + mColorId);
+
+            boolean showWhatIsButton = sp.getBoolean(WHATIF_BTN_PREF, true);
+
+            Log.d(TAG, "onActivityResult - showWhatIsButton: " + showWhatIsButton);
+        }
     }
 
     @Override

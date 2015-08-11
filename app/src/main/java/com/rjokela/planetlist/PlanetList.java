@@ -36,7 +36,6 @@ public class PlanetList extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Log.d(TAG, "onOptionsItemSelected(R.id.action_settings)");
-            return true;
         }
 
         return super.onOptionsItemSelected(item);
