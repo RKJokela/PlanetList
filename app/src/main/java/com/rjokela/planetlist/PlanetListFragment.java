@@ -28,9 +28,11 @@ public class PlanetListFragment extends Fragment {
     public final static String TAG = "PlanetListFragment";
 
     private final static String SELECTED_COLOR = "pref_selected_color";
+    private final static String SELECTED_STYLE = "pref_selected_type";
     private final static String WHATIF_BTN_PREF = "pref_display_button";
 
-    public static Integer mColorId;
+    public static int mColorId;
+    public static int mTextStyle;
     public static final int SHOW_PREFERENCES = 1;
 
     ImageTextArrayAdapter adapter;
@@ -99,6 +101,7 @@ public class PlanetListFragment extends Fragment {
         SharedPreferences sp =
                 PreferenceManager.getDefaultSharedPreferences(getActivity());
         mColorId = Integer.parseInt(sp.getString(SELECTED_COLOR, "0"));
+        mTextStyle = Integer.parseInt(sp.getString(SELECTED_STYLE, "0"));
         boolean showWhatIsButton = sp.getBoolean(WHATIF_BTN_PREF, true);
 
         planet_data = setupPlanets();
@@ -141,15 +144,15 @@ public class PlanetListFragment extends Fragment {
             SharedPreferences sp =
                     PreferenceManager.getDefaultSharedPreferences(getActivity());
             mColorId = Integer.parseInt(sp.getString(SELECTED_COLOR, "0"));
-
             Log.d(TAG, "onActivityResult - color: " + mColorId);
+
+            mTextStyle = Integer.parseInt(sp.getString(SELECTED_STYLE, "0"));
+            Log.d(TAG, "onActivityResult - style: " + mTextStyle);
 
             adapter.notifyDataSetChanged();
 
             boolean showWhatIsButton = sp.getBoolean(WHATIF_BTN_PREF, true);
-
             Log.d(TAG, "onActivityResult - showWhatIsButton: " + showWhatIsButton);
-
             flipWhatIsItButton(showWhatIsButton);
         }
     }

@@ -1,6 +1,7 @@
 package com.rjokela.planetlist;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,11 +56,13 @@ public class ImageTextArrayAdapter extends ArrayAdapter<Planet> {
         }
         // Display the information for that item
         int colorId = colorIdArray[PlanetListFragment.mColorId];
+        int textStyle = PlanetListFragment.mTextStyle;
 
         Planet planet = data[position];
         holder.txtName.setText(planet.name);
         holder.txtName.setTextColor(colorId);
         holder.txtType.setText(planet.type);
+        holder.txtType.setTypeface(Typeface.defaultFromStyle(textStyle));
         holder.imgLogo.setImageResource(planet.logo);
         return convertView;
     }
