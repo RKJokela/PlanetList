@@ -33,6 +33,8 @@ public class PlanetListFragment extends Fragment {
     public static Integer mColorId;
     public static final int SHOW_PREFERENCES = 1;
 
+    ImageTextArrayAdapter adapter;
+
     private final static String KEY_POSITION = "key_position";
     private final static String INITIAL_POSITION = "pref_position";
 
@@ -114,10 +116,11 @@ public class PlanetListFragment extends Fragment {
                 clickWhatIsItButton();
             }
         });
+        flipWhatIsItButton(showWhatIsButton);
 
         ListView listView = (ListView) getActivity().findViewById(R.id.planetList);
 
-        ImageTextArrayAdapter adapter = new ImageTextArrayAdapter(getActivity(),
+        adapter = new ImageTextArrayAdapter(getActivity(),
                 R.layout.planet_item, planet_data);
 
         listView.setAdapter(adapter);
@@ -141,9 +144,13 @@ public class PlanetListFragment extends Fragment {
 
             Log.d(TAG, "onActivityResult - color: " + mColorId);
 
+            adapter.notifyDataSetChanged();
+
             boolean showWhatIsButton = sp.getBoolean(WHATIF_BTN_PREF, true);
 
             Log.d(TAG, "onActivityResult - showWhatIsButton: " + showWhatIsButton);
+
+            flipWhatIsItButton(showWhatIsButton);
         }
     }
 
@@ -159,7 +166,7 @@ public class PlanetListFragment extends Fragment {
                 PreferenceManager.getDefaultSharedPreferences(getActivity());
         SharedPreferences.Editor ed = sp.edit();
         ed.putInt(key, value);
-        ed. apply ();
+        ed. apply();
     }
 
     public void clickListItem(View view, int position){
@@ -194,6 +201,15 @@ public class PlanetListFragment extends Fragment {
                 new Planet(R.drawable.pluto_symbol,"Pluto", type_minor_planet),
                 new Planet(R.drawable.eris_symbol,"Eris", type_minor_planet),
         };
+    }
+
+    private void flipWhatIsItButton(Boolean showWhatIsItButton) {
+        Button whatButton = (Button) getActivity().findViewById(R.id.planetWhatIsItBtn);
+        if (showWhatIsItButton == false) {
+            whatButton.setVisibility(View.GONE);
+        } else {
+            whatButton.setVisibility(View.VISIBLE);
+        }
     }
 
 }

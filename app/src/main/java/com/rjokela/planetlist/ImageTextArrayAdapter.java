@@ -19,6 +19,8 @@ public class ImageTextArrayAdapter extends ArrayAdapter<Planet> {
     private final Planet[] data;
     private LayoutInflater inflater;
 
+    int[] colorIdArray;
+
     static class PlanetHolder {
         ImageView imgLogo;
         TextView txtName;
@@ -30,6 +32,7 @@ public class ImageTextArrayAdapter extends ArrayAdapter<Planet> {
         this.layoutResourceId = layoutResourceId;
         this.context = context;
         this.data = data;
+        colorIdArray = context.getResources().getIntArray(R.array.color);
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -51,8 +54,11 @@ public class ImageTextArrayAdapter extends ArrayAdapter<Planet> {
             holder = (PlanetHolder)convertView.getTag();
         }
         // Display the information for that item
+        int colorId = colorIdArray[PlanetListFragment.mColorId];
+
         Planet planet = data[position];
         holder.txtName.setText(planet.name);
+        holder.txtName.setTextColor(colorId);
         holder.txtType.setText(planet.type);
         holder.imgLogo.setImageResource(planet.logo);
         return convertView;
