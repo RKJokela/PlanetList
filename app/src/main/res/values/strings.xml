@@ -47,4 +47,75 @@
     <string name="select_txt_color_summary">Select the color of text for the planets</string>
     <string name="select_txt_type_summary">Select the type of text for the planets</string>
 
+    <string-array name="text_color">
+        <item>@string/white</item>
+        <item>@string/yellow</item>
+        <item>@string/fuchsia</item>
+        <item>@string/red</item>
+        <item>@string/silver</item>
+        <item>@string/gray</item>
+        <item>@string/olive</item>
+        <item>@string/purple</item>
+        <item>@string/maroon</item>
+        <item>@string/aqua</item>
+        <item>@string/lime</item>
+        <item>@string/teal</item>
+        <item>@string/green</item>
+        <item>@string/blue</item>
+        <item>@string/navy</item>
+        <item>@string/black</item>
+    </string-array>
+
+    <integer-array name="color">
+        <item>@color/white</item>
+        <item>@color/yellow</item>
+        <item>@color/fuchsia</item>
+        <item>@color/red</item>
+        <item>@color/silver</item>
+        <item>@color/gray</item>
+        <item>@color/olive</item>
+        <item>@color/purple</item>
+        <item>@color/maroon</item>
+        <item>@color/aqua</item>
+        <item>@color/lime</item>
+        <item>@color/teal</item>
+        <item>@color/green</item>
+        <item>@color/blue</item>
+        <item>@color/navy</item>
+        <item>@color/black</item>
+    </integer-array>
+
+    <string-array name="text_color_id">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+    </string-array>
+
+    <string-array name="text_type">
+        <item>@string/normal</item>
+        <item>@string/bold</item>
+        <item>@string/italic</item>
+        <item>@string/bold_italic</item>
+    </string-array>
+
+    <string-array name="text_type_id">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
 </resources>
