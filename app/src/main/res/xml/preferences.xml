@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/list_ui_options">
+    </PreferenceCategory>
+
+    <CheckBoxPreference android:defaultValue="true"
+                        android:key="pref_display_button"
+                        android:summary="@string/show_whatis_button_details"
+                        android:title="@string/show_whatis_button" />
+
+    <PreferenceCategory android:title="@string/list_text_options">
+
+        <ListPreference android:defaultValue="0"
+                        android:entries="@array/text_color"
+                        android:entryValues="@array/text_color_id"
+                        android:key="pref_selected_color"
+                        android:summary="%s"
+                        android:title="@string/select_txt_color_title" />
+
+        <ListPreference android:defaultValue="0"
+                        android:entries="@array/text_type"
+                        android:entryValues="@array/text_type_id"
+                        android:key="pref_selected_type"
+                        android:summary="%s"
+                        android:title="@string/select_txt_type_title" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
