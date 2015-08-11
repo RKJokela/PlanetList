@@ -1,5 +1,6 @@
 package com.rjokela.planetlist;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -65,6 +66,8 @@ public class PlanetListFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.action_about:
                 Log.d(TAG, "onOptionsItemSelected(R.id.action_about)");
+                Intent intent = new Intent(getActivity(), AboutActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

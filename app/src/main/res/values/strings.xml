@@ -8,5 +8,11 @@
     <string name="type_minor_planet">minor planet</string>
     <string name="what_is_it">Type</string>
     <string name="action_about">About</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="copyright2">Introduction to Android</string>
+    <string name="copyright1">Copyright © 2015</string>
+    <string name="version">Version: 0.90</string>
+    <string name="legalinfo">Legal information</string>
 
 </resources>
