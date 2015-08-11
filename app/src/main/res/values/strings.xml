@@ -15,4 +15,36 @@
     <string name="version">Version: 0.90</string>
     <string name="legalinfo">Legal information</string>
 
+    <string name="white">white</string>
+    <string name="yellow">yellow</string>
+    <string name="fuchsia">fuchsia</string>
+    <string name="red">red</string>
+    <string name="silver">silver</string>
+    <string name="gray">gray</string>
+    <string name="olive">olive</string>
+    <string name="purple">purple</string>
+    <string name="maroon">maroon</string>
+    <string name="aqua">aqua</string>
+    <string name="lime">lime</string>
+    <string name="teal">teal</string>
+    <string name="green">green</string>
+    <string name="blue">blue</string>
+    <string name="navy">navy</string>
+    <string name="black">black</string>
+    <string name="txt_color">Text Color</string>
+    <string name="txt_type">Text Type</string>
+    <string name="normal">Normal</string>
+    <string name="bold">Bold</string>
+    <string name="italic">Italic</string>
+    <string name="bold_italic">Bold-Italic</string>
+    <string name="title_activity_preferences">Preferences</string>
+    <string name="list_text_options">Planet list: text options</string>
+    <string name="list_ui_options">Planet UI options</string>
+    <string name="show_whatis_button">What Is Button</string>
+    <string name="show_whatis_button_details">Check to show "What is" button</string>
+    <string name="select_txt_color_title">Text color</string>
+    <string name="select_txt_type_title">Text type</string>
+    <string name="select_txt_color_summary">Select the color of text for the planets</string>
+    <string name="select_txt_type_summary">Select the type of text for the planets</string>
+
 </resources>
