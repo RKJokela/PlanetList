@@ -24,6 +24,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rjokela.planetlist.PlanetList" />
         </activity>
+        <activity android:name=".PlanetPrefs"></activity>
     </application>
 
 </manifest>
