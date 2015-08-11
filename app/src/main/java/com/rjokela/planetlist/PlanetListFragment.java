@@ -2,8 +2,13 @@ package com.rjokela.planetlist;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.InflateException;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -17,6 +22,7 @@ import android.widget.Toast;
  * A placeholder fragment containing a simple view.
  */
 public class PlanetListFragment extends Fragment {
+    public final static String TAG = "PlanetListFragment";
 
     private int mPosition;
     Planet[] planet_data;
@@ -24,10 +30,40 @@ public class PlanetListFragment extends Fragment {
     public PlanetListFragment() {
     }
 
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_planet_list, container, false);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        Log.d(TAG, "onCreateOptionsMenu() called.");
+        Log.d(TAG, "Menu hashcode is" + Integer.toHexString(menu.hashCode()));
+        // Inflate the menu; this adds items to the action bar if present
+        try {
+            inflater.inflate(R.menu.planet_fragment_items, menu);
+        }
+        catch (InflateException e) {
+            Log.e(TAG, "onCreateOptionsMenu error - ", e);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.whatIsIt:
+                Log.d(TAG, "onOptionsItemSelected(R.id.whatIsIt)");
+                clickWhatIsItButton();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

@@ -2,11 +2,13 @@ package com.rjokela.planetlist;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
 public class PlanetList extends ActionBarActivity {
+    public final static String TAG = "PlanetListActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,9 +19,11 @@ public class PlanetList extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG, "onCreateOptionsMenu() called.");
+        Log.d(TAG, "Menu hashcode is" + Integer.toHexString(menu.hashCode()));
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_planet_list, menu);
-        return true;
+        return true;//super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -31,6 +35,7 @@ public class PlanetList extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Log.d(TAG, "onOptionsItemSelected(R.id.action_settings)");
             return true;
         }
 
