@@ -24,12 +24,15 @@ import android.widget.Toast;
 public class PlanetListFragment extends Fragment {
     public final static String TAG = "PlanetListFragment";
 
+    private final static String KEY_POSITION = "key_position";
+
     private int mPosition;
     Planet[] planet_data;
 
     public PlanetListFragment() {
     }
 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
@@ -67,9 +70,18 @@ public class PlanetListFragment extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(KEY_POSITION, mPosition);
+    }
+
+    @Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
         planet_data = setupPlanets();
+
+        if (savedInstanceState != null)
+            mPosition = savedInstanceState.getInt(KEY_POSITION, 0);
 
         Button whatButton = (Button) getActivity().findViewById(R.id.planetWhatIsItBtn);
         whatButton.setOnClickListener(new View.OnClickListener() {
