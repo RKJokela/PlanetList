@@ -7,5 +7,6 @@
     <string name="type_planet">planet</string>
     <string name="type_minor_planet">minor planet</string>
     <string name="what_is_it">Type</string>
+    <string name="action_about">About</string>
 
 </resources>

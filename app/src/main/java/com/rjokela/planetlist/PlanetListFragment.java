@@ -63,9 +63,8 @@ public class PlanetListFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.whatIsIt:
-                Log.d(TAG, "onOptionsItemSelected(R.id.whatIsIt)");
-                clickWhatIsItButton();
+            case R.id.action_about:
+                Log.d(TAG, "onOptionsItemSelected(R.id.action_about)");
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

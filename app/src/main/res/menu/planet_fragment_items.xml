@@ -1,11 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context=".PlanetList">
+      tools:context=".PlanetListFragment">
     <item
-        android:id="@+id/whatIsIt"
+        android:id="@+id/action_about"
         android:icon="@drawable/ic_action_about"
-        android:orderInCategory="10"
-        app:showAsAction="never|withText"
-        android:title="@string/what_is_it"/>
+        android:orderInCategory="150"
+        app:showAsAction="never"
+        android:title="@string/action_about"/>
 </menu>
