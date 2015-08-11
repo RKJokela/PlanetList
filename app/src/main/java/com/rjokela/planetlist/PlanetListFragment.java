@@ -1,5 +1,7 @@
 package com.rjokela.planetlist;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +27,7 @@ public class PlanetListFragment extends Fragment {
     public final static String TAG = "PlanetListFragment";
 
     private final static String KEY_POSITION = "key_position";
+    private final static String INITIAL_POSITION = "pref_position";
 
     private int mPosition;
     Planet[] planet_data;
@@ -80,8 +83,14 @@ public class PlanetListFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         planet_data = setupPlanets();
 
-        if (savedInstanceState != null)
+        if (savedInstanceState != null) {
             mPosition = savedInstanceState.getInt(KEY_POSITION, 0);
+        } else {
+            SharedPreferences sp =
+                    PreferenceManager.getDefaultSharedPreferences(getActivity());
+            mPosition = sp.getInt(INITIAL_POSITION, 0);
+            Log.d(TAG,"onActivityCreated mySharedPreferences mPosition " + mPosition);
+        }
 
         Button whatButton = (Button) getActivity().findViewById(R.id.planetWhatIsItBtn);
         whatButton.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +111,21 @@ public class PlanetListFragment extends Fragment {
                 clickListItem(view, position);
             }
         });
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        savePrefs(INITIAL_POSITION, mPosition);
+        super.onDestroy();
+    }
+
+    private void savePrefs(String key, int value) {
+        SharedPreferences sp =
+                PreferenceManager.getDefaultSharedPreferences(getActivity());
+        SharedPreferences.Editor ed = sp.edit();
+        ed.putInt(key, value);
+        ed. apply ();
     }
 
     public void clickListItem(View view, int position){
